@@ -233,7 +233,7 @@ looker.plugins.visualizations.add({
       data[i].rendered = data[i][measure_1_score].rendered; // used for tooltip and legened
       all_scores.push(data[i][measure_1_score].value); // used to set max radius
       all_weight.push(data[i][measure_2_weight].value); // used to set custom inner circle size
-      dataset_tiny[data[i][dimension].value] = data[i][measure_1_score].rendered;
+//      dataset_tiny[data[i][dimension].value] = data[i][measure_1_score].rendered;
     }
 
     if (!config.radius) {
@@ -285,7 +285,8 @@ looker.plugins.visualizations.add({
       .attr('class', 'd3-tip')
       .offset([0, 0])
       .html(function(d) {
-        return d.data.label + ": <span style='color:orangered'>" + d.data.rendered + "</span>";
+        return d.data.label 
+          // + ": <span style='color:orangered'>" + d.data.rendered + "</span>";
       });
 
     var arc = d3.svg.arc()
