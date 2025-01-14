@@ -233,7 +233,7 @@ looker.plugins.visualizations.add({
       data[i].rendered = data[i][measure_1_score].rendered; // used for tooltip and legened
       all_scores.push(data[i][measure_1_score].value); // used to set max radius
       all_weight.push(data[i][measure_2_weight].value); // used to set custom inner circle size
-//      dataset_tiny[data[i][dimension].value] = data[i][measure_1_score].rendered;
+      dataset_tiny[data[i][dimension].value] = data[i][measure_1_score].rendered;
     }
 
     if (!config.radius) {
@@ -285,8 +285,7 @@ looker.plugins.visualizations.add({
       .attr('class', 'd3-tip')
       .offset([0, 0])
       .html(function(d) {
-        return d.data.label 
-          // + ": <span style='color:orangered'>" + d.data.rendered + "</span>";
+        return d.data.label + ": <span style='color:orangered'>" + d.data.rendered + "</span>";
       });
 
     var arc = d3.svg.arc()
@@ -521,10 +520,10 @@ looker.plugins.visualizations.add({
         // sort alphanumerically
         items = d3.entries(items).sort(function(a,b) { return (a.key < b.key) ? -1 : (a.key > b.key) ? 1 : 0})
 
-        // adding rendered values to legend
+  /*      // adding rendered values to legend
         for (let i = 0; i < items.length; i++) {
           items[i].value.rendered = dataset_tiny[items[i].key]
-        }
+        } */
 
         li.selectAll("text")
             .data(items,function(d) { return d.key})
