@@ -230,7 +230,7 @@ looker.plugins.visualizations.add({
       data[i].score = +data[i][measure_1_score].value; // length of slice (circle radius default is 100)
       data[i].weight = +data[i][measure_2_weight].value; // angle of slice (width of slice)
       data[i].width = +data[i][measure_2_weight].value; // angle of slice (width of slice)
-      data[i].rendered = data[i][measure_1_score].rendered; // used for tooltip and legened
+      data[i].value = data[i][measure_1_score].value; // used for tooltip and legened
       all_scores.push(data[i][measure_1_score].value); // used to set max radius
       all_weight.push(data[i][measure_2_weight].value); // used to set custom inner circle size
       dataset_tiny[data[i][dimension].value] = data[i][measure_1_score].value;
@@ -508,14 +508,14 @@ looker.plugins.visualizations.add({
         lb.enter().append("rect").classed("legend-box",true)
         li.enter().append("g").classed("legend-items",true)
 
-      /*  svg.selectAll("[data-legend]").each(function() {
+        svg.selectAll("[data-legend]").each(function() {
             var self = d3.select(this)
             items[self.attr("data-legend")] = {
               pos : self.attr("data-legend-pos") || this.getBBox().y,
               color : self.attr("data-legend-color") != undefined ? self.attr("data-legend-color") : self.style("fill") != 'none' ? self.style("fill") : self.style("stroke"),
-              rendered : '100' // testing adding values to legend
+              rendered : '' // testing adding values to legend
             }
-          })*/
+          })
 
         // sort alphanumerically
         items = d3.entries(items).sort(function(a,b) { return (a.key < b.key) ? -1 : (a.key > b.key) ? 1 : 0})
